@@ -1,13 +1,17 @@
 package controller;
 
+import db.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.User;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginFormController {
     public AnchorPane context;
@@ -18,6 +22,20 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) {
+        String email = txtEmail.getText().toLowerCase();
+        String password = txtPassword.getText().trim();
+
+        Optional<User> selectedUser = Database.userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
+        if (selectedUser.isPresent()) {
+            if (selectedUser.get().getPassword().equals(password)) {
+                System.out.println(selectedUser.get().toString());
+                new Alert(Alert.AlertType.CONFIRMATION, "Login Successful").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Wrong Password").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, String.format("%s not found", email)).show();
+        }
     }
 
     public void createAccountOnAction(ActionEvent actionEvent) throws IOException {

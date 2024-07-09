@@ -16,18 +16,18 @@ public class SignupFormController {
     public TextField txtFirstName;
     public TextField txtEmail;
     public AnchorPane context;
-    public TextField txtFLastName;
+    public TextField txtLastName;
     public TextField txtPassword;
 
     public void signUpOnAction(ActionEvent actionEvent) throws IOException {
         String email = txtEmail.getText().toLowerCase();
         String firstName = txtFirstName.getText();
-        String lastName = txtFLastName.getText();
+        String lastName = txtLastName.getText();
         String password = txtPassword.getText().trim();
         Database.userTable.add(
-                new User(email, firstName, lastName, password)
+                new User(firstName, lastName, email, password)
         );
-        new Alert(Alert.AlertType.INFORMATION, "Sign up successful").show();
+        new Alert(Alert.AlertType.CONFIRMATION, "Sign up successful").show();
         setUi("LoginForm");
     }
 
