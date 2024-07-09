@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupFormController">
+<AnchorPane fx:id="context" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupFormController">
    <children>
       <Label layoutX="277.0" layoutY="47.0" text="Sign up" textFill="#273c75">
          <font>
@@ -18,20 +17,20 @@
          </font>
       </Label>
       <Separator layoutX="277.0" layoutY="75.0" prefHeight="0.0" prefWidth="292.0" />
-      <TextField layoutX="277.0" layoutY="104.0" prefHeight="28.0" prefWidth="137.0" promptText="First Name" />
-      <TextField layoutX="277.0" layoutY="147.0" prefHeight="28.0" prefWidth="292.0" promptText="email" />
-      <Button layoutX="277.0" layoutY="240.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="292.0" style="-fx-background-color: rgb(0, 151, 230);" text="Sign up" textFill="WHITE">
+      <TextField fx:id="txtFirstName" layoutX="277.0" layoutY="104.0" prefHeight="28.0" prefWidth="137.0" promptText="First Name" />
+      <TextField fx:id="txtEmail" layoutX="277.0" layoutY="147.0" prefHeight="28.0" prefWidth="292.0" promptText="email" />
+      <Button layoutX="277.0" layoutY="240.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="34.0" prefWidth="292.0" style="-fx-background-color: rgb(0, 151, 230);" text="Sign up" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="277.0" layoutY="292.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="292.0" style="-fx-background-color: rgb(25, 42, 86);" text="Already have an account" textFill="WHITE">
+      <Button layoutX="277.0" layoutY="292.0" mnemonicParsing="false" onAction="#alreadyHaveAccountOnAction" prefHeight="34.0" prefWidth="292.0" style="-fx-background-color: rgb(25, 42, 86);" text="Already have an account" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <TextField layoutX="432.0" layoutY="104.0" prefHeight="28.0" prefWidth="137.0" promptText="Last Name" />
-      <TextField layoutX="277.0" layoutY="187.0" prefHeight="28.0" prefWidth="292.0" promptText="Password" />
+      <TextField fx:id="txtFLastName" layoutX="432.0" layoutY="104.0" prefHeight="28.0" prefWidth="137.0" promptText="Last Name" />
+      <TextField fx:id="txtPassword" layoutX="277.0" layoutY="187.0" prefHeight="28.0" prefWidth="292.0" promptText="Password" />
       <ImageView fitHeight="400.0" fitWidth="265.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../assets/Signup-bg.jpg" />
