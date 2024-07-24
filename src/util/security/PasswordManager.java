@@ -3,7 +3,7 @@ package util.security;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class PasswordManager {
-    public String encode(String rawPassword) {
+    public String encrypt(String rawPassword) {
         return BCrypt.hashpw(rawPassword, BCrypt.gensalt(10));
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
+import util.security.PasswordManager;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class SignupFormController {
         String email = txtEmail.getText().toLowerCase();
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
-        String password = txtPassword.getText().trim();
+        String password = new PasswordManager().encrypt(txtPassword.getText().trim());
         Database.userTable.add(
                 new User(firstName, lastName, email, password)
         );

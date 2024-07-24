@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
+import util.security.PasswordManager;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class LoginFormController {
 
         Optional<User> selectedUser = Database.userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
         if (selectedUser.isPresent()) {
-            if (selectedUser.get().getPassword().equals(password)) {
+            if (new PasswordManager().checkPassword(password,selectedUser.get().getPassword())) {
                 System.out.println(selectedUser.get().toString());
                 new Alert(Alert.AlertType.CONFIRMATION, "Login Successful").show();
             } else {
