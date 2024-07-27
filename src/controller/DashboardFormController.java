@@ -52,9 +52,14 @@ public class DashboardFormController {
         setUi("LoginForm");
     }
 
+    public void studentFormOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("StudentForm");
+    }
+
     private void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml"))));
         stage.centerOnScreen();
     }
+
 }
