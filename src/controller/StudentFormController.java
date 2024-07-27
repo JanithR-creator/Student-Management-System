@@ -51,4 +51,10 @@ public class StudentFormController {
         setStudentId();
         new Alert(Alert.AlertType.INFORMATION, "Student Saved!").show();
     }
+
+    private void clear(){
+        txtDOB.setValue(null);
+        txtName.clear();
+        txtAddress.clear();
+    }
 }
