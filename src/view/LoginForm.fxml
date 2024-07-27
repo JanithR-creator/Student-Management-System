@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -25,6 +26,9 @@
          <font>
             <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="30.0" layoutY="264.0" mnemonicParsing="false" onAction="#createAccountOnAction" prefHeight="34.0" prefWidth="292.0" style="-fx-background-color: rgb(25, 42, 86);" text="Create an account" textFill="WHITE">
          <font>
