@@ -39,13 +39,13 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView layoutX="14.0" layoutY="115.0" prefHeight="278.0" prefWidth="575.0">
+      <TableView fx:id="tblStudent" layoutX="25.0" layoutY="107.0" prefHeight="278.0" prefWidth="575.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="#ID" />
-          <TableColumn prefWidth="129.0" text="Full Name" />
-            <TableColumn prefWidth="110.0" text="DOB" />
-            <TableColumn prefWidth="139.0" text="Address" />
-            <TableColumn prefWidth="139.0" text="Option" />
+          <TableColumn fx:id="colId" prefWidth="75.0" text="#ID" />
+          <TableColumn fx:id="colName" prefWidth="129.0" text="Full Name" />
+            <TableColumn fx:id="colDOB" prefWidth="110.0" text="DOB" />
+            <TableColumn fx:id="colAddress" prefWidth="139.0" text="Address" />
+            <TableColumn fx:id="colOption" prefWidth="139.0" text="Option" />
         </columns>
       </TableView>
    </children>
