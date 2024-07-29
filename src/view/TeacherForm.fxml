@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="teacherContext" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TeacherFormController">
+   <children>
+      <Label layoutX="12.0" layoutY="10.0" text="Teacher Management" textFill="#273c75">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Separator layoutX="12.0" layoutY="38.0" prefHeight="0.0" prefWidth="575.0" />
+      <Button layoutX="492.0" layoutY="8.0" mnemonicParsing="false" onAction="#backHomeOnAction" style="-fx-background-color: rgba(48, 51, 107,1.0);" text="Back to home" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="396.0" layoutY="8.0" mnemonicParsing="false" onAction="#newTeacherOnAction" style="-fx-background-color: rgba(0, 151, 230,1.0);" text="New Teacher" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="txtId" layoutX="15.0" layoutY="53.0" prefHeight="25.0" prefWidth="110.0" promptText="Teacher Id" />
+      <TextField fx:id="txtName" layoutX="134.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Full Name" />
+      <TextField fx:id="txtAddress" layoutX="442.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Address" />
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="419.0" promptText="Search here" />
+      <Button fx:id="btn" layoutX="442.0" layoutY="87.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: rgba(56, 103, 214,1.0);" text="Save Teacher" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="tblTacher" layoutX="12.0" layoutY="117.0" prefHeight="278.0" prefWidth="575.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="75.0" text="#ID" />
+            <TableColumn fx:id="colName" prefWidth="129.0" text="Full Name" />
+            <TableColumn fx:id="colDOB" prefWidth="110.0" text="DOB" />
+            <TableColumn fx:id="colAddress" prefWidth="139.0" text="Address" />
+            <TableColumn fx:id="colOption" prefWidth="139.0" text="Option" />
+         </columns>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TableView>
+      <TextField fx:id="txtContact" layoutX="290.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Contact" />
+   </children>
+</AnchorPane>
