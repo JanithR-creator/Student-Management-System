@@ -37,6 +37,7 @@
       </Button>
       <TextField fx:id="txtId" layoutX="15.0" layoutY="53.0" prefHeight="25.0" prefWidth="110.0" promptText="Teacher Id" />
       <TextField fx:id="txtName" layoutX="134.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Full Name" />
+      <TextField fx:id="txtContact" layoutX="290.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Contact" />
       <TextField fx:id="txtAddress" layoutX="442.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Address" />
       <TextField fx:id="txtSearch" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="419.0" promptText="Search here" />
       <Button fx:id="btn" layoutX="442.0" layoutY="87.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: rgba(56, 103, 214,1.0);" text="Save Teacher" textFill="#fffbfb">
@@ -47,11 +48,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="tblTacher" layoutX="12.0" layoutY="117.0" prefHeight="278.0" prefWidth="575.0">
+      <TableView fx:id="tblTeacher" layoutX="12.0" layoutY="117.0" prefHeight="278.0" prefWidth="575.0">
          <columns>
             <TableColumn fx:id="colId" prefWidth="75.0" text="#ID" />
             <TableColumn fx:id="colName" prefWidth="129.0" text="Full Name" />
-            <TableColumn fx:id="colDOB" prefWidth="110.0" text="DOB" />
+            <TableColumn fx:id="colContact" prefWidth="110.0" text="DOB" />
             <TableColumn fx:id="colAddress" prefWidth="139.0" text="Address" />
             <TableColumn fx:id="colOption" prefWidth="139.0" text="Option" />
          </columns>
@@ -59,6 +60,5 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </TableView>
-      <TextField fx:id="txtContact" layoutX="290.0" layoutY="53.0" prefHeight="25.0" prefWidth="143.0" promptText="Contact" />
    </children>
 </AnchorPane>
