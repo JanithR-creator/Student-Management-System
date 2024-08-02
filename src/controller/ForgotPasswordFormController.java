@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.tools.VerificationCodeGenerator;
 
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ public class ForgotPasswordFormController {
     }
 
     public void sendCodeOnAction(ActionEvent actionEvent) {
+        System.out.println(new VerificationCodeGenerator().getCode(5));
     }
 
     private void setUi(String location) throws IOException {
