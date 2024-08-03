@@ -6,13 +6,13 @@ public class Program {
     private String code;
     private String name;
     private String[] technologies;
-    private String[] teacherId;
+    private String teacherId;
     private double cost;
 
     public Program() {
     }
 
-    public Program(String code, String name, String[] technologies, String[] teacherId, double cost) {
+    public Program(String code, String name, String[] technologies, String teacherId, double cost) {
         this.code = code;
         this.name = name;
         this.technologies = technologies;
@@ -44,11 +44,11 @@ public class Program {
         this.technologies = technologies;
     }
 
-    public String[] getTeacherId() {
+    public String getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(String[] teacherId) {
+    public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
 
@@ -66,7 +66,7 @@ public class Program {
                 "code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", technologies=" + Arrays.toString(technologies) +
-                ", teacherId=" + Arrays.toString(teacherId) +
+                ", teacherId=" + teacherId +
                 ", cost=" + cost +
                 '}';
     }

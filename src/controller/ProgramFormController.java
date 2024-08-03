@@ -12,10 +12,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Program;
 import model.Teacher;
+import view.tm.ProgramTm;
 import view.tm.TechAddTm;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class ProgramFormController {
     public ComboBox<String> cmbTeacher;
@@ -36,11 +38,11 @@ public class ProgramFormController {
 
     public TableColumn<?, ?> colTeacher;
 
-    public TableColumn<?, ?> colcolTechOption;
+    public TableColumn<?, ?> colTechOption;
 
     public AnchorPane context;
 
-    public TableView<?> tblPrograms;
+    public TableView<ProgramTm> tblPrograms;
 
     public TableView<TechAddTm> tblTechnologies;
 
@@ -54,10 +56,20 @@ public class ProgramFormController {
 
     public TextField txtTechnology;
 
+    public Button btn;
+
 
     public void initialize() {
         setProgramCode();
         setTeachers();
+        loadProgram();
+
+        colTCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colTeacher.setCellValueFactory(new PropertyValueFactory<>("teacher"));
+        colTechOption.setCellValueFactory(new PropertyValueFactory<>("btnTech"));
+        colCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
         colTCode.setCellValueFactory(new PropertyValueFactory<>("Code"));
         colTNAme.setCellValueFactory(new PropertyValueFactory<>("Name"));
@@ -104,6 +116,44 @@ public class ProgramFormController {
 
     public void saveOnAction(ActionEvent event) {
 
+        String[] selectedTechs = new String[tmList.size()];
+        int pointer = 0;
+        for (TechAddTm t : tmList) {
+            selectedTechs[pointer] = t.getName();
+            pointer++;
+        }
+
+        if (btn.getText().equals("Save Program")) {
+            Program program = new Program(
+                    txtId.getText(),
+                    txtName.getText(),
+                    selectedTechs,
+                    cmbTeacher.getValue().split("\\.")[0],
+                    Double.parseDouble(txtCost.getText())
+            );
+            Database.programTable.add(program);
+            new Alert(Alert.AlertType.INFORMATION,"Saved").show();
+            loadProgram();
+        }
+
+    }
+
+    private void loadProgram(){
+        ObservableList<ProgramTm> programTmObservable=FXCollections.observableArrayList();
+        for(Program p:Database.programTable){
+            Button techButton=new Button("show Tech");
+            Button removeButton=new Button("Delete");
+            ProgramTm tm=new ProgramTm(
+                    p.getCode(),
+                    p.getName(),
+                    p.getTeacherId(),
+                    techButton,
+                    p.getCost(),
+                    removeButton
+            );
+            programTmObservable.add(tm);
+        }
+        tblPrograms.setItems(programTmObservable);
     }
 
     private void setUi(String location) throws IOException {
