@@ -71,6 +71,6 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </TableView>
-      <TextField fx:id="txtTechnology" layoutX="15.0" layoutY="98.0" prefHeight="25.0" prefWidth="264.0" promptText="Technology" />
+      <TextField fx:id="txtTechnology" layoutX="15.0" layoutY="98.0" onAction="#addTechOnAction" prefHeight="25.0" prefWidth="264.0" promptText="Technology" />
    </children>
 </AnchorPane>
