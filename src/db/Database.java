@@ -1,9 +1,6 @@
 package db;
 
-import model.Program;
-import model.Student;
-import model.Teacher;
-import model.User;
+import model.*;
 import util.security.PasswordManager;
 
 import java.util.ArrayList;
@@ -13,6 +10,7 @@ public class Database {
     public static ArrayList<Student> studentTable = new ArrayList<Student>();
     public static ArrayList<Teacher> teacherTable = new ArrayList<Teacher>();
     public static ArrayList<Program> programTable = new ArrayList<Program>();
+    public static ArrayList<Intake> intakeTable = new ArrayList<Intake>();
 
     static {
         userTable.add(

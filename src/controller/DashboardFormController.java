@@ -56,14 +56,16 @@ public class DashboardFormController {
         setUi("ProgramForm");
     }
 
-    public void intakeOnAction(ActionEvent actionEvent) {
+    public void intakeOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("IntakeForm");
     }
 
     public void teacherOnAction(ActionEvent actionEvent) throws IOException {
         setUi("TeacherForm");
     }
 
-    public void registrationOnAction(ActionEvent actionEvent) {
+    public void registrationOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("RegistrationForm");
     }
 
     public void studentFormOnAction(ActionEvent actionEvent) throws IOException {
