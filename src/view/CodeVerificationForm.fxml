@@ -9,24 +9,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="context" prefHeight="215.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CodeVerificationFormController">
-   <children>
-      <Label layoutX="32.0" layoutY="30.0" text="Verify Your Email" textFill="#273c75">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Separator layoutX="32.0" layoutY="60.0" prefHeight="3.0" prefWidth="224.0" />
-      <TextField fx:id="txtCode" layoutX="36.0" layoutY="126.0" prefHeight="25.0" prefWidth="224.0" promptText="email" />
-      <Button layoutX="36.0" layoutY="165.0" mnemonicParsing="false" onAction="#verifyCodeOnAction" prefHeight="36.0" prefWidth="224.0" style="-fx-background-color: rgba(56, 103, 214,1.0);" text="Verify" textFill="#fffbfb">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label fx:id="txtSelectedEmail" layoutX="35.0" layoutY="73.0" text="abcd@gmail.com" />
-      <Hyperlink layoutX="32.0" layoutY="96.0" onAction="#changeEmailOnAction" text="Change" />
-   </children>
+<AnchorPane fx:id="context" prefHeight="215.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CodeVerificationFormController">
+    <children>
+        <Label layoutX="32.0" layoutY="30.0" text="Verify Your Email" textFill="#273c75">
+            <font>
+                <Font name="System Bold" size="19.0"/>
+            </font>
+        </Label>
+        <Separator layoutX="32.0" layoutY="60.0" prefHeight="3.0" prefWidth="224.0"/>
+        <TextField fx:id="txtCode" layoutX="36.0" layoutY="126.0" prefHeight="25.0" prefWidth="224.0"
+                   promptText="email"/>
+        <Button layoutX="36.0" layoutY="165.0" mnemonicParsing="false" onAction="#verifyCodeOnAction" prefHeight="36.0"
+                prefWidth="224.0" style="-fx-background-color: rgba(56, 103, 214,1.0);" text="Verify"
+                textFill="#fffbfb">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Label fx:id="txtSelectedEmail" layoutX="35.0" layoutY="73.0" text="abcd@gmail.com"/>
+        <Hyperlink layoutX="32.0" layoutY="96.0" onAction="#changeEmailOnAction" text="Change"/>
+    </children>
 </AnchorPane>

@@ -7,72 +7,81 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="context" prefHeight="290.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
-   <children>
-      <Label layoutX="30.0" layoutY="14.0" text="Dashboard" textFill="#273c75">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Separator layoutX="14.0" layoutY="39.0" prefHeight="5.0" prefWidth="571.0" />
-      <Button layoutX="30.0" layoutY="69.0" mnemonicParsing="false" onAction="#studentFormOnAction" prefHeight="106.0" prefWidth="118.0" style="-fx-background-color: rgba(41, 128, 185,1.0);" text="Student" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label fx:id="lblDate" layoutX="248.0" layoutY="14.0" text="2024-07-25" textFill="#273c75">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTime" layoutX="382.0" layoutY="14.0" text="12:12:50" textFill="#273c75">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Separator layoutX="365.0" layoutY="3.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="3.0" />
-      <Button layoutX="169.0" layoutY="69.0" mnemonicParsing="false" onAction="#programOnAction" prefHeight="106.0" prefWidth="118.0" style="-fx-background-color: rgba(25, 42, 86,1.0);" text="Programs" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="309.0" layoutY="69.0" mnemonicParsing="false" onAction="#intakeOnAction" prefHeight="106.0" prefWidth="118.0" style="-fx-background-color: rgba(39, 60, 117,1.0);" text="Intakes" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="452.0" layoutY="69.0" mnemonicParsing="false" onAction="#teacherOnAction" prefHeight="106.0" prefWidth="118.0" style="-fx-background-color: rgba(64, 115, 158,1.0);" text="Teachers" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="30.0" layoutY="200.0" mnemonicParsing="false" onAction="#registrationOnAction" prefHeight="63.0" prefWidth="540.0" style="-fx-background-color: rgba(10, 61, 98,1.0);" text="Registration" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="494.0" layoutY="5.0" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="5.0" prefWidth="76.0" style="-fx-background-color: rgba(0, 151, 230,1.0);" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-   </children>
+<AnchorPane fx:id="context" prefHeight="290.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+    <children>
+        <Label layoutX="30.0" layoutY="14.0" text="Dashboard" textFill="#273c75">
+            <font>
+                <Font name="System Bold" size="19.0"/>
+            </font>
+        </Label>
+        <Separator layoutX="14.0" layoutY="39.0" prefHeight="5.0" prefWidth="571.0"/>
+        <Button layoutX="30.0" layoutY="69.0" mnemonicParsing="false" onAction="#studentFormOnAction" prefHeight="106.0"
+                prefWidth="118.0" style="-fx-background-color: rgba(41, 128, 185,1.0);" text="Student" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Label fx:id="lblDate" layoutX="248.0" layoutY="14.0" text="2024-07-25" textFill="#273c75">
+            <font>
+                <Font name="System Bold" size="19.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblTime" layoutX="382.0" layoutY="14.0" text="12:12:50" textFill="#273c75">
+            <font>
+                <Font name="System Bold" size="19.0"/>
+            </font>
+        </Label>
+        <Separator layoutX="365.0" layoutY="3.0" orientation="VERTICAL" prefHeight="34.0" prefWidth="3.0"/>
+        <Button layoutX="169.0" layoutY="69.0" mnemonicParsing="false" onAction="#programOnAction" prefHeight="106.0"
+                prefWidth="118.0" style="-fx-background-color: rgba(25, 42, 86,1.0);" text="Programs" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button layoutX="309.0" layoutY="69.0" mnemonicParsing="false" onAction="#intakeOnAction" prefHeight="106.0"
+                prefWidth="118.0" style="-fx-background-color: rgba(39, 60, 117,1.0);" text="Intakes" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button layoutX="452.0" layoutY="69.0" mnemonicParsing="false" onAction="#teacherOnAction" prefHeight="106.0"
+                prefWidth="118.0" style="-fx-background-color: rgba(64, 115, 158,1.0);" text="Teachers"
+                textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button layoutX="30.0" layoutY="200.0" mnemonicParsing="false" onAction="#registrationOnAction"
+                prefHeight="63.0" prefWidth="540.0" style="-fx-background-color: rgba(10, 61, 98,1.0);"
+                text="Registration" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button layoutX="494.0" layoutY="5.0" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="5.0"
+                prefWidth="76.0" style="-fx-background-color: rgba(0, 151, 230,1.0);" text="Logout" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+    </children>
 </AnchorPane>

@@ -17,7 +17,7 @@ public class IntakeTm {
         this.date = date;
         this.intakeName = intakeName;
         this.pName = pName;
-        this.btn=btn;
+        this.btn = btn;
     }
 
     public Button getBtn() {

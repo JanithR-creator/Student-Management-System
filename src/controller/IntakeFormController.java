@@ -38,7 +38,7 @@ public class IntakeFormController {
 
     ArrayList<String> programs = new ArrayList<>();
 
-    public void initialize(){
+    public void initialize() {
         setIntakeId();
         setProgram();
 
@@ -50,27 +50,27 @@ public class IntakeFormController {
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
     }
 
-    public void setProgram(){
-        for (Program p : Database.programTable){
-            programs.add(p.getCode()+". "+p.getName());
+    public void setProgram() {
+        for (Program p : Database.programTable) {
+            programs.add(p.getCode() + ". " + p.getName());
         }
-        ObservableList<String> observableList= FXCollections.observableList(programs);
+        ObservableList<String> observableList = FXCollections.observableList(programs);
         cmbProgram.setItems(observableList);
     }
 
-    public void setIntakeId(){
-        if(!Database.intakeTable.isEmpty()){
+    public void setIntakeId() {
+        if (!Database.intakeTable.isEmpty()) {
             Intake lastIntake = Database.intakeTable.get(
-                    Database.intakeTable.size()-1
+                    Database.intakeTable.size() - 1
             );
-            String lastId=lastIntake.getProgramId();
-            String splitData[]=lastId.split("-");
+            String lastId = lastIntake.getProgramId();
+            String splitData[] = lastId.split("-");
             String lastIdIntegerNumberAsAString = splitData[1];
             int lastIntegerIdAsInt = Integer.parseInt(lastIdIntegerNumberAsAString);
             lastIntegerIdAsInt++;
-            String generatedIntakeId="I-"+lastIntegerIdAsInt;
+            String generatedIntakeId = "I-" + lastIntegerIdAsInt;
             txtId.setText(generatedIntakeId);
-        }else{
+        } else {
             txtId.setText("I-1");
         }
     }
@@ -103,11 +103,11 @@ public class IntakeFormController {
         cmbProgram.setValue(null);
     }
 
-    private void loadTableData(){
-        ObservableList<IntakeTm> programTmObservable=FXCollections.observableArrayList();
-        for(Intake i:Database.intakeTable){
-            Button removeButton=new Button("Delete");
-            IntakeTm tm=new IntakeTm(
+    private void loadTableData() {
+        ObservableList<IntakeTm> programTmObservable = FXCollections.observableArrayList();
+        for (Intake i : Database.intakeTable) {
+            Button removeButton = new Button("Delete");
+            IntakeTm tm = new IntakeTm(
                     i.getProgramId(),
                     new SimpleDateFormat("yyyy-MM-dd").format(i.getStartDate()),
                     i.getIntakeName(),

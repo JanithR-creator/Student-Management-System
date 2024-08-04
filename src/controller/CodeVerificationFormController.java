@@ -29,17 +29,17 @@ public class CodeVerificationFormController {
     public void verifyCodeOnAction(ActionEvent actionEvent) throws IOException {
         if (
                 String.valueOf(code).equals(txtCode.getText())
-        ){
+        ) {
 
             FXMLLoader fxmlLoader =
                     new FXMLLoader(getClass().getResource("../view/ResetPasswordForm.fxml"));
             Parent parent = fxmlLoader.load();
             ResetPasswordFormController controller = fxmlLoader.getController();
             controller.setUserData(selectedEmail);
-            Stage stage =(Stage) context.getScene().getWindow();
+            Stage stage = (Stage) context.getScene().getWindow();
             stage.setScene(new Scene(parent));
 
-        }else{
+        } else {
             new Alert(Alert.AlertType.ERROR, "Wrong Verification Code").show();
         }
     }

@@ -27,10 +27,10 @@ public class ResetPasswordFormController {
     public void changePasswordOnAction(ActionEvent actionEvent) throws IOException {
         Optional<User> selectedUser = Database.userTable.stream().
                 filter(e -> e.getEmail().equals(selectedEmail)).findFirst();
-        if (selectedUser.isPresent()){
+        if (selectedUser.isPresent()) {
             selectedUser.get().setPassword(txtPassword.getText());
             setUi("LoginForm");
-        }else{
+        } else {
             new Alert(Alert.AlertType.ERROR, "Not Found").show();
         }
     }

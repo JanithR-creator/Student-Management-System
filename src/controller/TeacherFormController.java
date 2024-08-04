@@ -120,7 +120,7 @@ public class TeacherFormController {
             Database.teacherTable.add(teacher);
             setTeacherId();
             clear();
-           setTableData(searchText);
+            setTableData(searchText);
             new Alert(Alert.AlertType.INFORMATION, "Student Saved!").show();
         } else {
             for (Teacher t : Database.teacherTable) {
@@ -128,7 +128,7 @@ public class TeacherFormController {
                     t.setAddress(txtAddress.getText());
                     t.setContact(txtContact.getText());
                     t.setName(txtName.getText());
-                   setTableData(searchText);
+                    setTableData(searchText);
                     clear();
                     setTeacherId();
                     btn.setText("Save Teacher");
@@ -163,8 +163,8 @@ public class TeacherFormController {
     }
 
     private void setUi(String location) throws IOException {
-        Stage stage =(Stage) teacherContext.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/"+location+".fxml"))));
+        Stage stage = (Stage) teacherContext.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml"))));
         stage.centerOnScreen();
     }
 }

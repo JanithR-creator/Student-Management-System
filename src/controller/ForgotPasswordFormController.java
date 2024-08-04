@@ -45,7 +45,7 @@ public class ForgotPasswordFormController {
             mimeMessage.setText("Verification Code : " + verificationCode);
             mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 
-           // Transport.send(mimeMessage);
+            // Transport.send(mimeMessage);
             System.out.println("Completed");
 
             FXMLLoader fxmlLoader =

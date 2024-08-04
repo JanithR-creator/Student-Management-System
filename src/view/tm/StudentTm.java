@@ -4,7 +4,8 @@ import javafx.scene.control.Button;
 
 public class StudentTm {
     private String id;
-    private String fullName;;
+    private String fullName;
+    ;
     private String dob;
     private String address;
     private Button btn;

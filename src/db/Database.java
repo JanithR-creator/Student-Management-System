@@ -11,11 +11,9 @@ public class Database {
     public static ArrayList<Teacher> teacherTable = new ArrayList<Teacher>();
     public static ArrayList<Program> programTable = new ArrayList<Program>();
     public static ArrayList<Intake> intakeTable = new ArrayList<Intake>();
+    public static ArrayList<Registration> registrationsTable = new ArrayList<Registration>();
 
     static {
-        userTable.add(
-                new User("Janith", "Ranasinghe", "janith@gmail.com",
-                        new PasswordManager().encrypt("123"))
-        );
+        userTable.add(new User("Janith", "Ranasinghe", "janith@gmail.com", new PasswordManager().encrypt("123")));
     }
 }

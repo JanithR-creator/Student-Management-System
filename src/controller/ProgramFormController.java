@@ -132,18 +132,18 @@ public class ProgramFormController {
                     Double.parseDouble(txtCost.getText())
             );
             Database.programTable.add(program);
-            new Alert(Alert.AlertType.INFORMATION,"Saved").show();
+            new Alert(Alert.AlertType.INFORMATION, "Saved").show();
             loadProgram();
         }
 
     }
 
-    private void loadProgram(){
-        ObservableList<ProgramTm> programTmObservable=FXCollections.observableArrayList();
-        for(Program p:Database.programTable){
-            Button techButton=new Button("show Tech");
-            Button removeButton=new Button("Delete");
-            ProgramTm tm=new ProgramTm(
+    private void loadProgram() {
+        ObservableList<ProgramTm> programTmObservable = FXCollections.observableArrayList();
+        for (Program p : Database.programTable) {
+            Button techButton = new Button("show Tech");
+            Button removeButton = new Button("Delete");
+            ProgramTm tm = new ProgramTm(
                     p.getCode(),
                     p.getName(),
                     p.getTeacherId(),
