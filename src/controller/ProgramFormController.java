@@ -64,14 +64,14 @@ public class ProgramFormController {
         setTeachers();
         loadProgram();
 
-        colTCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("code"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colTeacher.setCellValueFactory(new PropertyValueFactory<>("teacher"));
         colTechOption.setCellValueFactory(new PropertyValueFactory<>("btnTech"));
         colCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
-        colTCode.setCellValueFactory(new PropertyValueFactory<>("Code"));
+        colTCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         colTNAme.setCellValueFactory(new PropertyValueFactory<>("Name"));
         colTRemove.setCellValueFactory(new PropertyValueFactory<>("btn"));
     }

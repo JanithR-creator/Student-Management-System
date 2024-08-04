@@ -37,7 +37,7 @@
          </cursor>
       </Button>
       <TextField fx:id="txtId" layoutX="15.0" layoutY="54.0" prefHeight="25.0" prefWidth="110.0" promptText="Intake Id" />
-      <TextField fx:id="txtContact" layoutX="257.0" layoutY="54.0" prefHeight="25.0" prefWidth="143.0" promptText="Intake Name" />
+      <TextField fx:id="txtName" layoutX="257.0" layoutY="54.0" prefHeight="25.0" prefWidth="143.0" promptText="Intake Name" />
       <TextField fx:id="txtSearch" layoutX="14.0" layoutY="88.0" prefHeight="25.0" prefWidth="419.0" promptText="Search here" />
       <Button fx:id="btn" layoutX="442.0" layoutY="88.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: rgba(56, 103, 214,1.0);" text="Save Intake" textFill="#fffbfb">
          <font>
@@ -47,14 +47,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="tblTeacher" layoutX="12.0" layoutY="117.0" prefHeight="278.0" prefWidth="575.0">
+      <TableView fx:id="tblIntake" layoutX="12.0" layoutY="117.0" prefHeight="278.0" prefWidth="575.0">
          <columns>
             <TableColumn fx:id="colId" prefWidth="75.0" text="#ID" />
             <TableColumn fx:id="colIntake" prefWidth="101.0" text="Intake" />
             <TableColumn fx:id="colDate" prefWidth="112.0" text="Start Date" />
-            <TableColumn fx:id="colProgram" prefWidth="102.0" text="Program" />
-            <TableColumn fx:id="colSate" prefWidth="100.0" text="Complete State" />
-            <TableColumn fx:id="colOption" prefWidth="84.0" text="Option" />
+            <TableColumn fx:id="colProgram" prefWidth="171.0" text="Program" />
+            <TableColumn fx:id="colOption" prefWidth="115.0" text="Option" />
          </columns>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
