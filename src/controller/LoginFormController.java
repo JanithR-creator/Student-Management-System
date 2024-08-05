@@ -12,6 +12,7 @@ import model.User;
 import util.security.PasswordManager;
 
 import java.io.IOException;
+import java.sql.*;
 import java.util.Optional;
 
 public class LoginFormController {
@@ -27,7 +28,24 @@ public class LoginFormController {
         String email = txtEmail.getText().toLowerCase();
         String password = txtPassword.getText().trim();
 
-        Optional<User> selectedUser = Database.userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
+        try {
+            User selectedUser = login(email);
+            if(null!=selectedUser){
+                if (new PasswordManager().checkPassword(password, selectedUser.getPassword())) {
+                    setUi("DashboardForm");
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Wrong Password").show();
+                }
+            }else {
+                new Alert(Alert.AlertType.ERROR, String.format("%s not found", email)).show();
+            }
+        }catch (SQLException e1) {
+            new Alert(Alert.AlertType.ERROR, e1.toString()).show();
+        } catch (ClassNotFoundException e2) {
+            new Alert(Alert.AlertType.ERROR, e2.toString()).show();
+        }
+
+       /* Optional<User> selectedUser = Database.userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
         if (selectedUser.isPresent()) {
             if (new PasswordManager().checkPassword(password, selectedUser.get().getPassword())) {
                 setUi("DashboardForm");
@@ -36,7 +54,8 @@ public class LoginFormController {
             }
         } else {
             new Alert(Alert.AlertType.ERROR, String.format("%s not found", email)).show();
-        }
+        }*/
+
     }
 
     public void createAccountOnAction(ActionEvent actionEvent) throws IOException {
@@ -47,5 +66,25 @@ public class LoginFormController {
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/" + location + ".fxml"))));
         stage.centerOnScreen();
+    }
+
+    private User login(String email) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
+        String sql = "SELECT * FROM user WHERE email='" + email + "'";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        if (resultSet.next()) {//record thiyeynm true otherwise false
+            User user = new User(
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getString("email"),
+                    resultSet.getString(4)
+            );
+            System.out.println(user);
+            return user;
+        }
+        return null;
     }
 }
