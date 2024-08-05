@@ -72,9 +72,13 @@ public class LoginFormController {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection =
                 DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
-        String sql = "SELECT * FROM user WHERE email='" + email + "'";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
+        //String sql = "SELECT * FROM user WHERE email='" + email + "'";
+        String sql = "SELECT * FROM user WHERE email=?";
+        //Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1,email);
+        //ResultSet resultSet = statement.executeQuery(sql);
+        ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {//record thiyeynm true otherwise false
             User user = new User(
                     resultSet.getString("first_name"),

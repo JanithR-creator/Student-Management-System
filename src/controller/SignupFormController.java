@@ -12,10 +12,7 @@ import model.User;
 import util.security.PasswordManager;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SignupFormController {
     public TextField txtFirstName;
@@ -67,8 +64,14 @@ public class SignupFormController {
         Class.forName("com.mysql.cj.jdbc.Driver");//load driver
         Connection connection =
                 DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");//create connection
-        String sql = "INSERT INTO user VALUES ('" + user.getEmail() + "','" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getPassword() + "')";//write sql
-        Statement statement = connection.createStatement();//create statement
+        //String sql = "INSERT INTO user VALUES ('" + user.getEmail() + "','" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getPassword() + "')";//write sql
+        String sql = "INSERT INTO user VALUES (?,?,?,?)";//write sql
+        //Statement statement = connection.createStatement();//create statement
+        PreparedStatement statement = connection.prepareStatement(sql);//create statement
+        statement.setString(1,user.getEmail());
+        statement.setString(2,user.getFirstName());
+        statement.setString(3,user.getLastName());
+        statement.setString(4,user.getPassword());
         int rowCount = statement.executeUpdate(sql); //set sql into the statement and execute
 
         return rowCount > 0;//return boolean
