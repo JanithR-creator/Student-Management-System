@@ -19,7 +19,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 public class StudentFormController {
@@ -73,7 +75,39 @@ public class StudentFormController {
 
     private void setTableData(String searchText) {
         ObservableList<StudentTm> obList = FXCollections.observableArrayList();
-        for (Student st : Database.studentTable) {
+        try {
+            for (Student st : searchStudents(searchText)) {
+                Button btn = new Button("Delete");
+                StudentTm tm = new StudentTm(
+                        st.getStudentId(),
+                        st.getFullNAme(),
+                        new SimpleDateFormat("yyyy-MM-dd").format(st.getDateOfBirth()),
+                        st.getAddress(),
+                        btn
+                );
+                btn.setOnAction(e -> {
+                    Alert alert = new Alert(
+                            Alert.AlertType.CONFIRMATION,
+                            "Are you sure?",
+                            ButtonType.YES,
+                            ButtonType.NO
+                    );
+                    Optional<ButtonType> buttonType = alert.showAndWait();
+                    if (buttonType.get().equals(ButtonType.YES)) {
+                        Database.studentTable.remove(st);
+                        new Alert(Alert.AlertType.INFORMATION, "Deleted!").show();
+                        setTableData(searchText);
+                        setStudentId();
+                    }
+                });
+                obList.add(tm);
+            }
+            tblStudent.setItems(obList);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+        /*for (Student st : Database.studentTable) {
             if (st.getFullNAme().contains(searchText)) {
                 Button btn = new Button("Delete");
                 StudentTm tm = new StudentTm(
@@ -102,20 +136,20 @@ public class StudentFormController {
             }
         }
         tblStudent.setItems(obList);
-    }
+    }*/
 
     private void setStudentId() {
 
         try {
             String lastId = getLastId();
-            if(null!=null){
+            if (null != null) {
                 String splitData[] = lastId.split("-");
                 String lastIdIntegerNumberAsAString = splitData[1];
                 int lastIntegerIdAsInt = Integer.parseInt(lastIdIntegerNumberAsAString);
                 lastIntegerIdAsInt++;
                 String generatedStudentId = "S-" + lastIntegerIdAsInt;
                 txtId.setText(generatedStudentId);
-            }else {
+            } else {
                 txtId.setText("S-1");
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -235,5 +269,29 @@ public class StudentFormController {
             return resultSet.getString(1);
         }
         return null;
+    }
+
+    private List<Student> searchStudents(String text) throws ClassNotFoundException, SQLException {
+        text = "%" + text + "%";
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
+        PreparedStatement statement =
+                connection.prepareStatement("SELECT * FROM student WHERE full_name LIKE ? OR address LIKE ?");
+        statement.setString(1, text);
+        statement.setString(2, text);
+        ResultSet resultSet = statement.executeQuery();
+        List<Student> list = new ArrayList<>();
+        while (resultSet.next()) {
+            list.add(
+                    new Student(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getDate(3),
+                            resultSet.getString(4)
+                    )
+            );
+        }
+        return list;
     }
 }
