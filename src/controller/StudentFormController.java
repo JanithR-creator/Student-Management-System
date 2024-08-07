@@ -154,7 +154,7 @@ public class StudentFormController {
 
         try {
             String lastId = getLastId();
-            if (null != null) {
+            if (!getLastId().isEmpty()) {
                 String splitData[] = lastId.split("-");
                 String lastIdIntegerNumberAsAString = splitData[1];
                 int lastIntegerIdAsInt = Integer.parseInt(lastIdIntegerNumberAsAString);
