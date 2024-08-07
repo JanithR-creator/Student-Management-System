@@ -184,14 +184,14 @@ public class StudentFormController {
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
+        Student student = new Student(
+                txtId.getText(),
+                txtName.getText(),
+                Date.from(txtDOB.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                txtAddress.getText()
+        );
 
         if (btn.getText().equalsIgnoreCase("Save Student")) {
-            Student student = new Student(
-                    txtId.getText(),
-                    txtName.getText(),
-                    Date.from(txtDOB.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()),
-                    txtAddress.getText()
-            );
 
             try {
                 if (saveStudent(student)) {
@@ -213,7 +213,18 @@ public class StudentFormController {
             setTableData(searchText);
             new Alert(Alert.AlertType.INFORMATION, "Student Saved!").show();*/
         } else {
-            for (Student st : Database.studentTable) {
+
+            try {
+                if (updateStudent(student)) {
+                    clear();
+                    setTableData(searchText);
+                    new Alert(Alert.AlertType.INFORMATION, "Student Updated!").show();
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+            }
+
+           /* for (Student st : Database.studentTable) {
                 if (st.getStudentId().equals(txtId.getText())) {
                     st.setAddress(txtAddress.getText());
                     st.setDateOfBirth(Date.from(txtDOB.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -225,7 +236,7 @@ public class StudentFormController {
                     return;
                 }
             }
-            new Alert(Alert.AlertType.WARNING, "Not Found").show();
+            new Alert(Alert.AlertType.WARNING, "Not Found").show();*/
         }
     }
 
@@ -261,6 +272,22 @@ public class StudentFormController {
         statement.setString(2, student.getFullNAme());
         statement.setObject(3, student.getDateOfBirth());
         statement.setString(4, student.getAddress());
+
+        int rowCount = statement.executeUpdate();
+
+        return rowCount > 0;
+    }
+
+    private boolean updateStudent(Student student) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
+        String sql = "UPDATE student SET full_name=?,dob=?,address=? WHERE student_id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, student.getFullNAme());
+        statement.setObject(2, student.getDateOfBirth());
+        statement.setString(3, student.getAddress());
+        statement.setString(4, student.getStudentId());
 
         int rowCount = statement.executeUpdate();
 
