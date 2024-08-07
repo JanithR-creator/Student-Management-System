@@ -1,6 +1,7 @@
 package controller;
 
 import db.Database;
+import db.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -69,9 +70,10 @@ public class LoginFormController {
     }
 
     private User login(String email) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        /*Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");*/
+        Connection connection = DbConnection.getInstance().getConnection();
         //String sql = "SELECT * FROM user WHERE email='" + email + "'";
         String sql = "SELECT * FROM user WHERE email=?";
         //Statement statement = connection.createStatement();

@@ -1,6 +1,7 @@
 package controller;
 
 import db.Database;
+import db.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -61,9 +62,10 @@ public class SignupFormController {
     }*/
 
     private boolean signup(User user) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");//load driver
+       /* Class.forName("com.mysql.cj.jdbc.Driver");//load driver
         Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");//create connection
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");//create connection*/
+        Connection connection = DbConnection.getInstance().getConnection();
         //String sql = "INSERT INTO user VALUES ('" + user.getEmail() + "','" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getPassword() + "')";//write sql
         String sql = "INSERT INTO user VALUES (?,?,?,?)";//write sql
         //Statement statement = connection.createStatement();//create statement
