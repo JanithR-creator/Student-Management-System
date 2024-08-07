@@ -94,10 +94,21 @@ public class StudentFormController {
                     );
                     Optional<ButtonType> buttonType = alert.showAndWait();
                     if (buttonType.get().equals(ButtonType.YES)) {
-                        Database.studentTable.remove(st);
+                        try {
+                            if (deleteStudent(st.getStudentId())) {
+                                new Alert(Alert.AlertType.INFORMATION, "Deleted!").show();
+                                setTableData(searchText);
+                                setStudentId();
+                            } else {
+                                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                            }
+                        } catch (ClassNotFoundException | SQLException ex) {
+                            new Alert(Alert.AlertType.ERROR, e.toString()).show();
+                        }
+                        /*Database.studentTable.remove(st);
                         new Alert(Alert.AlertType.INFORMATION, "Deleted!").show();
                         setTableData(searchText);
-                        setStudentId();
+                        setStudentId();*/
                     }
                 });
                 obList.add(tm);
@@ -193,7 +204,7 @@ public class StudentFormController {
                     new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                 }
             } catch (SQLException | ClassNotFoundException e) {
-                new Alert(Alert.AlertType.WARNING, e.toString()).show();
+                new Alert(Alert.AlertType.ERROR, e.toString()).show();
             }
 
             /*Database.studentTable.add(student);
@@ -293,5 +304,15 @@ public class StudentFormController {
             );
         }
         return list;
+    }
+
+    private boolean deleteStudent(String id) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/lms", "root", "1234");
+        String sql = "DELETE FROM student WHERE student_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, id);
+        return statement.executeUpdate() > 0;
     }
 }
