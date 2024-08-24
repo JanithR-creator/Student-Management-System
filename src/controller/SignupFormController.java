@@ -52,6 +52,7 @@ public class SignupFormController {
             }
         } catch (SQLException e1) {
             new Alert(Alert.AlertType.ERROR, e1.toString()).show();
+            System.out.println(e1);
         } catch (ClassNotFoundException e2) {
             new Alert(Alert.AlertType.ERROR, e2.toString()).show();
         }
@@ -74,7 +75,7 @@ public class SignupFormController {
         statement.setString(2,user.getFirstName());
         statement.setString(3,user.getLastName());
         statement.setString(4,user.getPassword());
-        int rowCount = statement.executeUpdate(sql); //set sql into the statement and execute
+        int rowCount = statement.executeUpdate(); //set sql into the statement and execute
 
         return rowCount > 0;//return boolean
     }
